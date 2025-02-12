@@ -13,7 +13,7 @@ export default function TodoApp() {
 
   // Fetch tasks from backend
   useEffect(() => {
-    axios.get("http://localhost:5000/api/tasks")
+    axios.get("https://to-do-list-kfj7.onrender.com/api/tasks")
       .then((res) => setTasks(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -27,7 +27,7 @@ export default function TodoApp() {
     }
     setError("");
 
-    axios.post("http://localhost:5000/api/tasks", { text: trimmedTask })
+    axios.post("https://to-do-list-kfj7.onrender.com/api/tasks", { text: trimmedTask })
       .then((res) => {
         setTasks([...tasks, res.data]);
         setNewTask("");
@@ -38,7 +38,7 @@ export default function TodoApp() {
 
   // Function to delete a task
   const deleteTask = (id) => {
-    axios.delete(`http://localhost:5000/api/tasks/${id}`)
+    axios.delete(`https://to-do-list-kfj7.onrender.com/api/tasks/${id}`)
       .then(() => {
         setTasks(tasks.filter(task => task._id !== id));
         toast.error("Task deleted successfully!"); // Show toast message
@@ -61,7 +61,7 @@ export default function TodoApp() {
     }
     setError("");
 
-    axios.put(`http://localhost:5000/api/tasks/${id}`, { text: trimmedText })
+    axios.put(`https://to-do-list-kfj7.onrender.com/api/tasks/${id}`, { text: trimmedText })
       .then((res) => {
         setTasks(tasks.map(task => task._id === id ? res.data : task));
         setEditingTask(null);
